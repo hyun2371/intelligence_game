@@ -34,12 +34,8 @@ public class RouletteController : MonoBehaviour
         {
             this.rotSpeed = 0;
             float angle = transform.eulerAngles.z;
-            if (330 <= angle && angle < 30|| 150 <= angle && angle < 210)
-            {
-                isLocked = true;
-                potion1.SetActive(true);
-            }
-            else if (30 <= angle && angle < 90|| 210 <= angle && angle < 270)
+            
+            if (30 <= angle && angle < 90|| 210 <= angle && angle < 270)
             {
                 isLocked = true;
                 potion2.SetActive(true);
@@ -48,6 +44,12 @@ public class RouletteController : MonoBehaviour
             {
                 isLocked = true;
                 potion3.SetActive(true);
+            }
+
+            else (330 <= angle && angle < 30|| 150 <= angle && angle < 210)
+            {
+                isLocked = true;
+                potion1.SetActive(true);
             }
             
             if (isRotating)
