@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private float speed = 4;
     private bool grounded;
+    private bool isHit = false;
 
     void Start()
     {
@@ -66,7 +67,6 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Trap")
         {
-            this.gameDirector.GetComponent<GameDirector>().IncreaseScore(5);
             transform.localScale = Vector3.one;
             gameObject.transform.position=new Vector2(-6.4f, 0f);
         }
@@ -76,17 +76,23 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Ball")
-        {
-            this.gameDirector.GetComponent<GameDirector>().decreaseHp();
-            AudioSource hurtSound = GameObject.Find("BallGenerator").GetComponent<AudioSource>();
-            hurtSound.Play();
-        }
-
         if (other.gameObject.tag == "Goal")
         {
             this.gameDirector.GetComponent<GameDirector>().EndGame();
             AudioSource hurtSound = GameObject.Find("goal").GetComponent<AudioSource>();
         }
+
+        if (other.gameObject.tag == "Ball"&&!isHit)
+        {
+            this.isHit = true;
+            this.gameDirector.GetComponent<GameDirector>().decreaseHp();
+            AudioSource hurtSound = GameObject.Find("BallGenerator").GetComponent<AudioSource>();
+            hurtSound.Play();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        this.isHit = false;
     }
 }
