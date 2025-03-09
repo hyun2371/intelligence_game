@@ -1,5 +1,6 @@
 ## 중간과제
-
+![Image](https://github.com/user-attachments/assets/2a707887-0ab6-4cda-8ba1-9215233d9da3)
+![Image](https://github.com/user-attachments/assets/00ad744a-9f50-448e-b59c-30eeaa0822b1)
 
 ## 기말과제
 ### 밤송이로 사과 맞히기
